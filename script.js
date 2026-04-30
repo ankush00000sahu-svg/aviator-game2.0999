@@ -1,5 +1,5 @@
 // ============ CONFIG ============
-const SERVER_URL = window.location.origin; // Change this to your Railway URL after deploy
+const SERVER_URL = "aviator-game20999-production.up.railway.app";
 const UPI_ID = '7903368331@fam';
 
 // ============ STATE ============
