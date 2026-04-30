@@ -291,21 +291,21 @@ io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
   
   socket.on('joinGame', (data) => {
-    socket.userId = data.userId;
-    socket.join('players');
-    
-    // Send current game state
-    socket.emit('gameState', {
-      status: gameState.status,
-      multiplier: gameState.multiplier,
-      timer: gameState.timer,
-      round: gameState.round,
-      history: gameState.history,
-      balance: data.users[socket.userId]?.balance || 0,
-      currentBet: data.users[socket.userId]?.currentBet || 0,
-      isPlaying: data.users[socket.userId]?.isPlaying || false
-    });
+  socket.on('joinGame', (userData) => {
+  socket.userId = userData.userId;
+  socket.join('players');
+
+  socket.emit('gameState', {
+    status: gameState.status,
+    multiplier: gameState.multiplier,
+    timer: gameState.timer,
+    round: gameState.round,
+    history: gameState.history,
+    balance: data.users[socket.userId]?.balance || 0,
+    currentBet: data.users[socket.userId]?.currentBet || 0,
+    isPlaying: data.users[socket.userId]?.isPlaying || false
   });
+});
   
   socket.on('placeBet', (betData) => {
     const user = data.users[socket.userId];
